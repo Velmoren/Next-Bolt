@@ -4,25 +4,25 @@ import BannerTop from "../components/BannerTop";
 import CatalogCards from "../components/CatalogCards";
 import CATALOG_ITEMS from "../resources/categories";
 import Layout, { siteTitle } from "../components/layout";
-// import BoltServices from "../services/boltServices";
+import BoltServices from "../services/boltServices";
 
-// const boltServices = new BoltServices();
+const boltServices = new BoltServices();
 
-// Catalog.getInitialProps = async () => {
-// 	const types = await boltServices.getAllType().then((res) => {
-// 		return res;
-// 	});
+Catalog.getInitialProps = async () => {
+	const types = await boltServices.getAllType().then((res) => {
+		return res;
+	});
 
-// 	return {
-// 		types,
-// 	};
-// };
+	return {
+		types,
+	};
+};
 
 function Catalog(props) {
 	const path_spans = "Каталог продукции";
 	const path_link = [{ label: "Главная", path: "/" }];
 	const bannerTitile = "Каталог продукции";
-	// const { types } = props;
+	const { types } = props;
 
 	return (
 		<Layout>
@@ -41,7 +41,9 @@ function Catalog(props) {
 				</div>
 				<div className="catalog p-30">
 					<div className="container">
-						<div className="box">{/* <CatalogCards types={types} /> */}</div>
+						<div className="box">
+							<CatalogCards types={types} />
+						</div>
 					</div>
 				</div>
 

@@ -1,0 +1,40 @@
+.box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.list {
+  display: flex;
+  align-self: flex-end;
+}
+
+.list_item {
+  list-style: none;
+  border: 1px solid #ddd;
+  border-left: none;
+
+
+  &:first-child {
+    border-left: 1px solid #ddd;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  & a {
+    position: relative;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 15px;
+    display: block;
+    color: #608d98;
+
+    &:hover {
+      background-color: #ebebeb;
+    }
+  }
+}

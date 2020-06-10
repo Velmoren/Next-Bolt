@@ -1,0 +1,30 @@
+.form_buttons_check {
+  & input {
+    display: none;
+  }
+
+  & label {
+    position: relative;
+    padding-left: 25px;
+    color: #608d98;
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: white;
+      border: 1px solid #608d98;
+      border-radius: 3px;
+    }
+  }
+
+  & input[type=checkbox]:checked+label:before {
+    content: '\2713';
+    font-size: 13px;
+    text-align: center;
+    line-height: 13px;
+  }
+}

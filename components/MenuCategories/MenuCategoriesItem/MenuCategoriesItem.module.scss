@@ -1,0 +1,31 @@
+.item {
+    display: flex;
+    list-style: none;
+    border-bottom: 1px solid #608d98;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    & a {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 5px 20px;
+        text-decoration: none;
+        color: #404c54;
+
+        &:hover {
+            background-color: #ebebeb;
+        }
+
+        &:visited {
+            color: #404c54;
+        }
+    }
+}
+
+.image {
+    margin-right: 10px;
+}

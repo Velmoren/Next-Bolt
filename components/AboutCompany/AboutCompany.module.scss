@@ -1,0 +1,58 @@
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  font-style: italic;
+  color: #9eb9ca;
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.image {
+  border-radius: 5px;
+
+}
+
+.title_mini {
+  margin: 10px 0;
+  font-size: 14px;
+  display: block;
+  font-weight: bold;
+  color: #9eb9ca;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.list {
+  padding: 0;
+  list-style-position: inside;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.requisites {
+
+  & th {
+    color: #9eb9ca;
+  }
+
+  & tr,
+  th {
+    width: 50%;
+    text-align: left;
+    padding: 10px 0;
+  }
+
+  & tr:nth-child(2n) {
+    background: #ebebeb;
+  }
+}

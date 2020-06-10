@@ -1,0 +1,44 @@
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item_left {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #404c54;
+  margin-right: 15px;
+
+  & img {
+    margin-bottom: 5px;
+  }
+
+  & span {
+    text-transform: uppercase;
+    font-size: 8px;
+  }
+}
+
+.item_right {
+  display: flex;
+  flex-direction: column;
+
+  & a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.item_text {
+  color: white;
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class BoltServices {
-	_apiBase = "http://web1c.standart.by/std_UT/hs/api";
+	_apiBase = "https://web1c.standart.by/std_UT/hs/api";
 
 	getResource = async (url) => {
 		try {

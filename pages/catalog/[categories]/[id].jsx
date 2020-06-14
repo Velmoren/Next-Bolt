@@ -10,17 +10,20 @@ import Layout, { siteTitle } from "../../../components/layout";
 import PagePagination from "../../../components/PagePagination";
 import { sliceNumbers } from "../../../action/halpers";
 import SettingsCard from "../../../components/SettingsCard";
+import { useRouter } from "next/router";
 
-class Anchors extends React.Component {
+class Items extends React.Component {
 	boltServices = new BoltServices();
 	state = {
-		path_spans: "Анкера",
+		path_spans: "ddd",
 		path_link: [
 			{ label: "Главная", path: "/" },
 			{ label: "Каталог", path: "/catalog" },
-			{ label: "Анкера", path: "/catalog/anchors" },
+			{ label: this.props.typeName, path: this.props.typeID },
+			{ label: "ddd", path: this.props.typeID },
 		],
-		bannerTitile: "Анкера",
+		// bannerTitile: this.props.itemName,
+		bannerTitile: "ddd",
 		ID: this.props.ID,
 		goods: [],
 		currentPage: 1,
@@ -139,11 +142,18 @@ class Anchors extends React.Component {
 	}
 }
 
-Anchors.getInitialProps = async ({ query }) => {
-	console.log(query);
-
+Items.getInitialProps = async ({ query }) => {
+	const boltServices = new BoltServices();
 	const ID = query.id;
-	return { ID };
+	const category = await boltServices.getAllGoods(query.categories);
+	const typeName = await category.Type;
+	const typeID = await category.UID;
+
+	return {
+		ID,
+		typeName,
+		typeID,
+	};
 };
 
 const mapStateToProps = (store) => {
@@ -160,4 +170,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Anchors);
+export default connect(mapStateToProps, mapDispatchToProps)(Items);

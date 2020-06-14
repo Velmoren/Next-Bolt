@@ -19,7 +19,13 @@ export default function LogInForm() {
 			<form className={form}>
 				<h2 className={form_title}>Вход для партнеров</h2>
 				<div className={form_control}>
-					<label htmlFor="LogInFormEmail">Логин или E-mail</label>
+					<div className={form_control_wrap}>
+						<label htmlFor="LogInFormEmail">Логин или E-mail</label>
+						<Link href="">
+							<a>Зарегистрироваться</a>
+						</Link>
+					</div>
+
 					<input type="email" id="LogInFormEmail" />
 				</div>
 

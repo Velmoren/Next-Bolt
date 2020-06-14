@@ -3,7 +3,6 @@ import s from "./GoodsList.module.scss";
 
 function GoodsList(props) {
 	const { goods, namePage } = props;
-	console.log(namePage);
 
 	return (
 		<>
@@ -22,7 +21,7 @@ function GoodsList(props) {
 						return (
 							<div className={s.box} key={index}>
 								<div className={s.image}>
-									<img src="" alt="" />
+									<img src="/image/prod_img.jpg" alt="" />
 								</div>
 								<div className={s.description}>
 									<Link

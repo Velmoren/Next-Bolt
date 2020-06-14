@@ -9,14 +9,28 @@ export default function BannerTop(props) {
 		<div className={box}>
 			<div className={path}>
 				{path_link.map((link, index) => {
-					return (
-						<React.Fragment key={index}>
-							<Link href={link.path}>
-								<a>{link.label}</a>
-							</Link>
-							<span className={arrow}> » </span>
-						</React.Fragment>
-					);
+					if (index < 2) {
+						return (
+							<React.Fragment key={index}>
+								<Link href={link.path}>
+									<a>{link.label}</a>
+								</Link>
+								<span className={arrow}> » </span>
+							</React.Fragment>
+						);
+					} else {
+						return (
+							<React.Fragment key={index}>
+								<Link
+									href={`/catalog/[categories]`}
+									as={`/catalog/${link.path}`}
+								>
+									<a>{link.label}</a>
+								</Link>
+								<span className={arrow}> » </span>
+							</React.Fragment>
+						);
+					}
 				})}
 				<span>{path_spans}</span>
 			</div>

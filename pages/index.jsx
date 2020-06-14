@@ -24,6 +24,7 @@ Home.getInitialProps = async () => {
 function Home(props) {
 	const cart = useSelector((state) => state.cart);
 	const { types } = props;
+
 	return (
 		<Layout>
 			<Head>

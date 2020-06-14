@@ -25,71 +25,7 @@ export default class BoltServices {
 
 	getAllGoods = async (id) => {
 		const res = await this.getResource(`/StandartsByType/${id}`);
-		return res.data.ListOfTypes[0].StdList;
-	};
-
-	getAllBolts = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/bd35f5e8-394a-11e9-9fa8-00155d0e072e`
-		);
-
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllScrews = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/c90c4463-394a-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllWares = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/dbe38c4a-394a-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllNuts = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/2dd5ff8b-394b-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllAnchors = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/ac55ae62-394a-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllElements = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/145ad2fc-394b-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllWashers = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/912fc794-394a-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllOtherBolts = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/06d29a2a-394b-11e9-9fa8-00155d0e072e`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
-	};
-
-	getAllOtherWares = async () => {
-		const res = await this.getResource(
-			`/StandartsByType/66784aac-577c-11e7-bc71-c4e98402e535`
-		);
-		return res.data.ListOfTypes[0].StdList.map(this._transformScrews);
+		return res.data.ListOfTypes[0];
 	};
 
 	// выбор вариантов/размеров одного товара
@@ -98,6 +34,12 @@ export default class BoltServices {
 			`/Standart/${id}?offset=${currentPage}&count=${countPage}`
 		);
 		return res.data;
+	};
+
+	getItemsName = async (id) => {
+		const res = await this.getResource(`/Standart/${id}`);
+
+		return res;
 	};
 
 	// поиск

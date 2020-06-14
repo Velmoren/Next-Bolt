@@ -48,34 +48,47 @@ export default function SettingsCard(props) {
 							</tr>
 						</thead>
 						<tbody>
-							{goods.map((item) => {
-								const { id, name, form, dimA, dimB, mat, pack, price } = item;
-								return (
-									<tr key={id}>
-										<th className="th_body th_standart">{sliceGosts(name)}</th>
-										<th className="th_body">{form}</th>
-										<th className="th_body">{dimA}</th>
-										<th className="th_body">{dimB}</th>
-										<th className="th_body">{mat}</th>
-										<th className="th_body">5</th>
-										<th className="th_body">{pack}</th>
-										<th className="th_body">
-											<input type="text" className="input_count" />
-										</th>
-										<th className="th_body">{price}</th>
-										<th className="th_body">
-											<button
-												className="btn_cart"
-												onClick={() => {
-													addCartItems(id);
-												}}
-											>
-												<img src="/image/cart_btn.png" alt="cart_btn" />
-											</button>
-										</th>
-									</tr>
-								);
-							})}
+							{goods
+								? goods.map((item) => {
+										const {
+											id,
+											name,
+											form,
+											dimA,
+											dimB,
+											mat,
+											pack,
+											price,
+										} = item;
+										return (
+											<tr key={id}>
+												<th className="th_body th_standart">
+													{sliceGosts(name)}
+												</th>
+												<th className="th_body">{form}</th>
+												<th className="th_body">{dimA}</th>
+												<th className="th_body">{dimB}</th>
+												<th className="th_body">{mat}</th>
+												<th className="th_body">5</th>
+												<th className="th_body">{pack}</th>
+												<th className="th_body">
+													<input type="text" className="input_count" />
+												</th>
+												<th className="th_body">{price}</th>
+												<th className="th_body">
+													<button
+														className="btn_cart"
+														onClick={() => {
+															addCartItems(id);
+														}}
+													>
+														<img src="/image/cart_btn.png" alt="cart_btn" />
+													</button>
+												</th>
+											</tr>
+										);
+								  })
+								: null}
 						</tbody>
 					</table>
 				</div>

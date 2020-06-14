@@ -7,10 +7,12 @@ export default function HeroGoods(props) {
 	const { types } = props;
 	return (
 		<div className={box}>
-			{types.map((type, index) => {
-				const { UID } = type;
-				return <HeroGoodsItem key={UID} type={type} index={index} />;
-			})}
+			{types
+				? types.map((type, index) => {
+						const { UID } = type;
+						return <HeroGoodsItem key={UID} type={type} index={index} />;
+				  })
+				: null}
 		</div>
 	);
 }

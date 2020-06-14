@@ -10,28 +10,29 @@ import Layout, { siteTitle } from "../../components/layout";
 
 const boltServices = new BoltServices();
 
-Anchors.getInitialProps = async ({ query }) => {
+Categories.getInitialProps = async ({ query }) => {
 	const pageName = await query.categories;
-	const goods = await boltServices.getAllGoods(query.categories).then((res) => {
-		return res;
-	});
+	const category = await boltServices.getAllGoods(query.categories);
+	const goods = await category.StdList;
+	const typeName = await category.Type;
 
 	return {
+		typeName,
 		goods,
 		pageName,
+		query,
 	};
 };
 
-function Anchors(props) {
-	const namePage = "anchors";
-	const bannerTitile = "Анкера";
+function Categories(props) {
+	const { goods, pageName, typeName, query } = props;
+
+	const bannerTitile = typeName;
 	const path_spans = bannerTitile;
 	const path_link = [
 		{ label: "Главная", path: "/" },
 		{ label: "Каталог продукции", path: "/catalog" },
 	];
-
-	const { goods, pageName } = props;
 
 	return (
 		<Layout>
@@ -72,4 +73,4 @@ function Anchors(props) {
 	);
 }
 
-export default Anchors;
+export default Categories;

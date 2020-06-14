@@ -44,7 +44,9 @@ export default function Header() {
 					</nav>
 					<div className="logics">
 						<div className="search">
-							<a href="#" className="link"></a>
+							<Link href="/search">
+								<a className="link"></a>
+							</Link>
 						</div>
 						<div className="cart">
 							<Link activeClassName="active" href="/cart">

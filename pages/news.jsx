@@ -5,7 +5,6 @@ import BannerTop from "../components/BannerTop";
 import NewsItems from "../components/NewsItems";
 import PagePagination from "../components/PagePagination";
 import NEWS_DATA from "../resources/news";
-// import WrapperSections from "../components/WrapperSections";
 
 export default function News() {
 	const path_spans = "Новости";

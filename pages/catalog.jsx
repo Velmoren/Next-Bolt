@@ -2,7 +2,6 @@ import Head from "next/head";
 import React from "react";
 import BannerTop from "../components/BannerTop";
 import CatalogCards from "../components/CatalogCards";
-import CATALOG_ITEMS from "../resources/categories";
 import Layout, { siteTitle } from "../components/layout";
 import BoltServices from "../services/boltServices";
 

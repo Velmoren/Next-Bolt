@@ -3,7 +3,7 @@ import React from "react";
 import BannerTop from "../../components/BannerTop";
 import MenuCategories from "../../components/MenuCategories";
 import Contacts from "../../components/Contacts";
-import FilterTop from "../../components/FilterTop";
+import SearchTop from "../../components/SearchTop";
 import GoodsList from "../../components/GoodsList";
 import BoltServices from "../../services/boltServices";
 import Layout, { siteTitle } from "../../components/layout";
@@ -11,8 +11,13 @@ import Layout, { siteTitle } from "../../components/layout";
 const boltServices = new BoltServices();
 
 Categories.getInitialProps = async ({ query }) => {
+	console.log(query);
+
 	const pageName = await query.categories;
 	const category = await boltServices.getAllGoods(query.categories);
+	const types = await boltServices.getAllType().then((res) => {
+		return res;
+	});
 	const goods = await category.StdList;
 	const typeName = await category.Type;
 
@@ -21,11 +26,12 @@ Categories.getInitialProps = async ({ query }) => {
 		goods,
 		pageName,
 		query,
+		types,
 	};
 };
 
 function Categories(props) {
-	const { goods, pageName, typeName, query } = props;
+	const { goods, pageName, typeName, query, types } = props;
 
 	const bannerTitile = typeName;
 	const path_spans = bannerTitile;
@@ -33,6 +39,7 @@ function Categories(props) {
 		{ label: "Главная", path: "/" },
 		{ label: "Каталог продукции", path: "/catalog" },
 	];
+	console.log(query);
 
 	return (
 		<Layout>
@@ -54,7 +61,7 @@ function Categories(props) {
 					<div className="container">
 						<div className="box">
 							<div className="left">
-								<MenuCategories boxMargin={`0 0 40px 0`} />
+								<MenuCategories boxMargin={`0 0 40px 0`} types={types} />
 								<Contacts
 									colorText={"#608d98"}
 									paddingBox={"0"}
@@ -62,7 +69,7 @@ function Categories(props) {
 								/>
 							</div>
 							<div className="centerAndDolie">
-								<FilterTop />
+								<SearchTop />
 								<GoodsList goods={goods} namePage={pageName} />
 							</div>
 						</div>

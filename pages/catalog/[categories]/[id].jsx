@@ -3,7 +3,7 @@ import React from "react";
 import BannerTop from "../../../components/BannerTop";
 import MenuCategories from "../../../components/MenuCategories";
 import Contacts from "../../../components/Contacts";
-import FilterTop from "../../../components/FilterTop";
+import SearchTop from "../../../components/SearchTop";
 import BoltServices from "../../../services/boltServices";
 import { connect } from "react-redux";
 import Layout, { siteTitle } from "../../../components/layout";
@@ -86,6 +86,7 @@ class Items extends React.Component {
 			size,
 			currentPage,
 		} = this.state;
+		console.log(this.props.query);
 
 		return (
 			<Layout>
@@ -109,7 +110,10 @@ class Items extends React.Component {
 						<div className="container">
 							<div className="box">
 								<div className="left">
-									<MenuCategories boxMargin={`0 0 40px 0`} />
+									<MenuCategories
+										boxMargin={`0 0 40px 0`}
+										types={this.props.types}
+									/>
 									<Contacts
 										colorText={"#608d98"}
 										paddingBox={"0"}
@@ -117,7 +121,7 @@ class Items extends React.Component {
 									/>
 								</div>
 								<div className="centerAndDolie">
-									<FilterTop />
+									<SearchTop />
 									<SettingsCard goods={this.state.goods} />
 									<PagePagination
 										count={size}
@@ -143,9 +147,14 @@ class Items extends React.Component {
 }
 
 Items.getInitialProps = async ({ query }) => {
+	console.log(query);
+
 	const boltServices = new BoltServices();
 	const ID = query.id;
 	const category = await boltServices.getAllGoods(query.categories);
+	const types = await boltServices.getAllType().then((res) => {
+		return res;
+	});
 	const typeName = await category.Type;
 	const typeID = await category.UID;
 
@@ -153,6 +162,8 @@ Items.getInitialProps = async ({ query }) => {
 		ID,
 		typeName,
 		typeID,
+		types,
+		query,
 	};
 };
 

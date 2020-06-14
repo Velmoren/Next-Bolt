@@ -3,7 +3,6 @@ import React from "react";
 import BannerTop from "../components/BannerTop";
 import Contacts from "../components/Contacts";
 import Layout, { siteTitle } from "../components/layout";
-// import WrapperSections from "../components/WrapperSections";
 
 export default function ContactsPage() {
 	const path_spans = "Контакты";

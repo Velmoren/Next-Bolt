@@ -5,12 +5,25 @@ import BannerTop from "../components/BannerTop";
 import AboutCompany from "../components/AboutCompany";
 import Contacts from "../components/Contacts";
 import MenuCategories from "../components/MenuCategories";
-// import WrapperSections from "../components/WrapperSections";
+import BoltServices from "../services/boltServices";
+
+const boltServices = new BoltServices();
+
+About.getInitialProps = async () => {
+	const types = await boltServices.getAllType().then((res) => {
+		return res;
+	});
+
+	return {
+		types,
+	};
+};
 
 function About(props) {
 	const path_spans = "О компании";
 	const path_link = [{ label: "Главная", path: "/" }];
 	const bannerTitile = "О компании";
+	const { types } = props;
 
 	return (
 		<Layout>
@@ -31,7 +44,7 @@ function About(props) {
 					<div className="container">
 						<div className="box">
 							<div className="left">
-								<MenuCategories boxMargin={`0 0 40px 0`} />
+								<MenuCategories boxMargin={`0 0 40px 0`} types={types} />
 								<Contacts
 									colorText={"#608d98"}
 									paddingBox={"0"}

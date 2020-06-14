@@ -16,7 +16,7 @@ export default function LogInForm() {
 
 	return (
 		<div className={box}>
-			<form className={form}>
+			<form className={form} action="/api/login" method="GET">
 				<h2 className={form_title}>Вход для партнеров</h2>
 				<div className={form_control}>
 					<div className={form_control_wrap}>
